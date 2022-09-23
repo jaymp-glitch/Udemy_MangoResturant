@@ -1,25 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Mango.Services.ProductAPI.Models
+namespace Mango.Services.ProductAPI.Models.Dtos
 {
-    public class Product
+    public class ProductDto
     {
-        //prop+Tab twice to get code for property
-
-        //Key is a data annotation to mark the product as primary key
-        [Key]
         public int ProductId { get; set; }
-
-        [Required] //to make sure in DB its not a nullable filed
         public string ProductName { get; set; }
-
-        [Range(1, 1000)]
         public double Price { get; set; }
         public string ProductDescription { get; set; }
         public string CategoryName { get; set; }
         public string ImageUrl { get; set; }
 
-
-
+        //No Data annotations unlike Product class because this is DTO and not connecting to DB
+        //Uses auto mapper to convert ProductDto to Product and vice-versa
+        //Auto mapping is configured in newly created file 'MappingConfig.cs'
     }
 }
